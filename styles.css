@@ -71,6 +71,7 @@ svg {
   /* TRANSITIONS */
   --trans-share-button: all 400ms ease-out;
   --trans-default: all 120ms ease-in-out;
+  --trans-footer: all 500ms ease-in-out;
 
   /* SHARE BUTTON */
   --share-button-size: 32px;
@@ -145,7 +146,7 @@ body {
   max-width: 20.625rem;
   background-color: var(--clr-white);
   border-radius: var(--br-card);
-  /* overflow: hidden; */
+  overflow: hidden;
   box-shadow: var(--card-shadow);
 }
 
@@ -154,15 +155,14 @@ body {
   background: url(./images/drawers.jpg);
   background-position: center 25%;
   background-size: cover;
-  border-radius: var(--br-card) var(--br-card) 0 0;
 }
 
-/* @media (min-width: 768px) { */
 @media (min-width: 900px) {
   .card {
     max-width: 45.625rem;
     display: grid;
     grid-template-columns: 17.8125rem 1fr;
+    overflow: visible;
   }
 
   .image-header {
@@ -195,7 +195,6 @@ body {
   }
 }
 
-/* @media (min-width: 768px) { */
 @media (min-width: 900px) {
   :root {
     --p-inline-footer: 2.5rem !important;
@@ -265,55 +264,77 @@ body {
   }
 }
 
-/* @media (min-width: 768px) { */
 @media (min-width: 900px) {
-  .share-button[aria-expanded='false'],
-  .share-button[aria-expanded='true'] {
+  #share-button[aria-expanded='false'],
+  #share-button[aria-expanded='true'] {
     bottom: 2.25rem;
   }
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ACTIVE FOOTER STYLES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.hidden {
-  display: none !important;
-}
-
-#social-links-active {
+.social-links-container {
   position: absolute;
+  background-color: var(--clr-darker-grey);
 }
 
-.active,
-.social-links {
+.social-links-container,
+.default {
+  transition: var(--trans-footer);
+  transform: translateY(0);
+}
+
+.share-bar {
   display: flex;
   align-items: center;
-}
-
-.active {
-  position: relative;
-  background-color: var(--clr-darker-grey);
   gap: 1.3125rem;
 }
 
 .social-links {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
-/* @media (max-width: 640px) { */
+.no-pointer-events {
+  pointer-events: none;
+}
+
+.card-footer:has(#share-button[aria-expanded='false']) {
+  .social-links-container {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.card-footer:has(#share-button[aria-expanded='true']) {
+  .social-links-container {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (width < 900px) {
-  .active {
+  .social-links-container {
     padding-block: 1.375rem;
     padding-left: var(--p-inline-footer);
-    border-radius: 0 0 var(--br-card) var(--br-card);
 
     left: 0;
     bottom: 0;
     width: 100%;
   }
+
+  .card-footer:has(#share-button[aria-expanded='true']) {
+    .default {
+      opacity: 0;
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
 }
 
 @media (min-width: 900px) {
-  .active {
+  .social-links-container {
     padding: 1.125rem 2.25rem;
     border-radius: var(--br-card);
 
@@ -321,7 +342,7 @@ body {
     bottom: calc(27px + var(--share-button-size) + var(--p-block-desk));
   }
 
-  .active::after {
+  .social-links-container::after {
     --triangle-height: 16px;
     content: '';
     position: absolute;
@@ -332,5 +353,11 @@ body {
     transform: rotate(45deg);
     bottom: calc(var(--triangle-height) * -0.5);
     left: calc(50% - var(--triangle-height) / 2);
+  }
+
+  .card-footer:has(#share-button[aria-expanded='false']) {
+    .social-links-container {
+      transform: translateY(50%);
+    }
   }
 }

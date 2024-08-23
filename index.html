@@ -46,7 +46,7 @@
               id="share-button"
               class="share-button"
               aria-label="share button"
-              aria-controls="social-links"
+              aria-controls="social-links-container"
               aria-expanded="false"
             >
               <svg
@@ -73,18 +73,20 @@
                 <p class="footer-date">28 Jun 2020</p>
               </div>
             </div>
-            <div id="social-links-active" class="active hidden">
-              <p class="share-text">Share</p>
-              <div class="social-links">
-                <a href="" class="social-link">
-                  <img src="./images/icon-facebook.svg" alt="" />
-                </a>
-                <a href="" class="social-link">
-                  <img src="./images/icon-twitter.svg" alt="" />
-                </a>
-                <a href="" class="social-link">
-                  <img src="./images/icon-pinterest.svg" alt="" />
-                </a>
+            <div class="social-links-container" aria-hidden="true" inert>
+              <div class="share-bar">
+                <p class="share-text">Share</p>
+                <div class="social-links">
+                  <a href="" class="social-link">
+                    <img src="./images/icon-facebook.svg" alt="" />
+                  </a>
+                  <a href="" class="social-link">
+                    <img src="./images/icon-twitter.svg" alt="" />
+                  </a>
+                  <a href="" class="social-link">
+                    <img src="./images/icon-pinterest.svg" alt="" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
