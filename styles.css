@@ -143,6 +143,7 @@ body {
 
 .card {
   position: relative;
+  width: 100%;
   max-width: 20.625rem;
   background-color: var(--clr-white);
   border-radius: var(--br-card);
@@ -296,8 +297,8 @@ body {
   gap: 1rem;
 }
 
-.no-pointer-events {
-  pointer-events: none;
+.social-link {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card-footer:has(#share-button[aria-expanded='false']) {
