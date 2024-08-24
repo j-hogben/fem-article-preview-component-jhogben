@@ -230,6 +230,12 @@ body {
   background-color: transparent;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  border-radius: 50%;
+  outline-color: transparent;
+}
+
+.share-button:focus-visible {
+  outline-color: var(--clr-lighter-grey);
 }
 
 .share-button,
@@ -299,6 +305,14 @@ body {
 
 .social-link {
   -webkit-tap-highlight-color: transparent;
+  transition: var(--trans-default);
+}
+@media (hover: hover) and (pointer: fine) {
+  .social-link:hover,
+  .social-link:focus-visible {
+    scale: 1.5;
+    outline: none;
+  }
 }
 
 .card-footer:has(#share-button[aria-expanded='false']) {
